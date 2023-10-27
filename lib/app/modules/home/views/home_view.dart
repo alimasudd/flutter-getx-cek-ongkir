@@ -124,6 +124,41 @@ class HomeView extends GetView<HomeController> {
             onChanged: (value) => controller.provTujuanId.value = value!.provinceId ?? '0',
           ),
           const SizedBox(height: 20,),
+
+          //kota tujuan
+          DropdownSearch<City>(
+            popupProps: PopupProps.dialog(
+              fit: FlexFit.loose,
+              showSearchBox: true,
+              itemBuilder: (context, item, isSelected) => ListTile(
+                title: Text('${item.type} ${item.cityName}'),
+              ),
+            ),
+            dropdownDecoratorProps: const DropDownDecoratorProps(
+              dropdownSearchDecoration: InputDecoration(
+                labelText: 'Kota Tujuan',
+                contentPadding: EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 15
+                ),
+                border: OutlineInputBorder(),
+              ),
+            ),
+            asyncItems: (text) async {
+              var response = await Dio().get(
+                  "https://api.rajaongkir.com/starter/city?province=${controller.provTujuanId.value}",
+                  options: Options(
+                      headers: {
+                        'key' : '0ae702200724a396a933fa0ca4171a7e'
+                      }
+                  )
+              );
+              var models = City.fromJsonList(response.data['rajaongkir']['results']);
+              return models;
+            },
+            onChanged: (value) => controller.cityTujuanId.value = value!.cityId ?? '0',
+          ),
+          const SizedBox(height: 20,),
         ],
       )
     );
