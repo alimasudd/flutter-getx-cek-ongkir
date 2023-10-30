@@ -159,6 +159,21 @@ class HomeView extends GetView<HomeController> {
             onChanged: (value) => controller.cityTujuanId.value = value!.cityId ?? '0',
           ),
           const SizedBox(height: 20,),
+
+          //berat
+          TextField(
+            controller: controller.beratC,
+            keyboardType: TextInputType.number,
+            decoration: const InputDecoration(
+              enabledBorder: OutlineInputBorder(),
+              labelText: 'Berat (gram)',
+              contentPadding: EdgeInsets.symmetric(
+                vertical: 15,
+                horizontal: 15
+              )
+            ),
+          ),
+          const SizedBox(height: 20,),
         ],
       )
     );
