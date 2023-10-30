@@ -174,6 +174,44 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
           const SizedBox(height: 20,),
+
+          //pilih kurir
+          DropdownSearch<Map<String,dynamic>>(
+            items: const [
+              {
+                'code': 'jne',
+                'name': 'JNE'
+              },
+              {
+                'code': 'pos',
+                'name': 'POS Indonesia'
+              },
+              {
+                'code': 'tiki',
+                'name': 'TIKI'
+              },
+              ],
+            popupProps: PopupProps.dialog(
+              fit: FlexFit.loose,
+              showSearchBox: true,
+              itemBuilder: (context, item, isSelected) => ListTile(
+                title: Text('${item['name']}'),
+              ),
+            ),
+            onChanged: (value) => controller.codeKurir.value = value!['code'] ?? '',
+            dropdownDecoratorProps: const DropDownDecoratorProps(
+              dropdownSearchDecoration: InputDecoration(
+                labelText: 'Pilih Kurir',
+                contentPadding: EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 15
+                ),
+                border: OutlineInputBorder(),
+              ),
+            ),
+            dropdownBuilder: (context, selectedItem) => Text('${selectedItem?['name'] ?? 'Pilih Kurir'}'),
+          ),
+          const SizedBox(height: 50,),
         ],
       )
     );
