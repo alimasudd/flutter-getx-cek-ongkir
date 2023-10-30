@@ -10,4 +10,9 @@ class HomeController extends GetxController {
   RxString cityAsalId = '0'.obs;
   RxString provTujuanId = '0'.obs;
   RxString cityTujuanId = '0'.obs;
+
+  RxString codeKurir = ''.obs;
+  RxBool isLoading = false.obs;
+
+  List<Ongkir> ongkosKirim = [];
 }
