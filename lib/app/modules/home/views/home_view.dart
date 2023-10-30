@@ -212,6 +212,16 @@ class HomeView extends GetView<HomeController> {
             dropdownBuilder: (context, selectedItem) => Text('${selectedItem?['name'] ?? 'Pilih Kurir'}'),
           ),
           const SizedBox(height: 50,),
+
+          Obx(() {
+          return ElevatedButton(
+              onPressed: (){
+                if(controller.isLoading.isFalse){
+                  controller.cekOngkir();
+                }
+              },
+              child: Text(controller.isLoading.isFalse ? 'Cek Ongkos Kirim' : 'Loading'));
+})
         ],
       )
     );
