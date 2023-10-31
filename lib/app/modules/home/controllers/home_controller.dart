@@ -17,6 +17,15 @@ class HomeController extends GetxController {
   List<Ongkir> ongkosKirim = [];
 
   void cekOngkir() async {
+    if(provAsalId.value != '0' && cityAsalId.value != '0' && provTujuanId.value != '0' && cityTujuanId.value != '0' && codeKurir.value != '0'){
 
+
+
+    }else{
+      Get.defaultDialog(
+        title: "Kesalahan",
+        middleText: "Data Input Belum Lengkap",
+      );
+    }
   }
 }
