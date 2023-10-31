@@ -15,4 +15,8 @@ class HomeController extends GetxController {
   RxBool isLoading = false.obs;
 
   List<Ongkir> ongkosKirim = [];
+
+  void cekOngkir() async {
+
+  }
 }
