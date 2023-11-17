@@ -33,6 +33,16 @@ class HomeController extends GetxController {
         List ongkir = response.data['rajaongkir']['results'][0]['costs'] as List;
         ongkosKirim = Ongkir.fromJsonList(ongkir);
 
+        Get.defaultDialog(
+          title: 'Ongkos Kirim',
+          content: Column(
+            children: ongkosKirim.map((e) => ListTile(
+              title: Text(e.service!.toUpperCase()),
+              subtitle: Text('Rp ${e.cost![0].value}'),
+            )).toList(),
+          )
+        );
+
       }catch(e){
         print(e);
         Get.defaultDialog(
