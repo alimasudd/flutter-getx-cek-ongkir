@@ -19,6 +19,15 @@ class HomeController extends GetxController {
   void cekOngkir() async {
     if(provAsalId.value != '0' && cityAsalId.value != '0' && provTujuanId.value != '0' && cityTujuanId.value != '0' && codeKurir.value != '0'){
       try{
+        isLoading.value = true;
+        var response = await Dio().post('https://api.rajaongkir.com/starter/cost',
+          options: Options(
+            headers: {
+              'content-type' : 'application/x-www-form-urlencoded',
+              'key' : '0ae702200724a396a933fa0ca4171a7e'
+            }
+          ),
+        );
 
       }catch(e){
         print(e);
