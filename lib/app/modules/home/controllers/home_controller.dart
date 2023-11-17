@@ -29,6 +29,10 @@ class HomeController extends GetxController {
           ),
         );
 
+        isLoading.value = false;
+        List ongkir = response.data['rajaongkir']['results'][0]['costs'] as List;
+        ongkosKirim = Ongkir.fromJsonList(ongkir);
+
       }catch(e){
         print(e);
         Get.defaultDialog(
