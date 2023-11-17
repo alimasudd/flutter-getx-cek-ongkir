@@ -18,7 +18,15 @@ class HomeController extends GetxController {
 
   void cekOngkir() async {
     if(provAsalId.value != '0' && cityAsalId.value != '0' && provTujuanId.value != '0' && cityTujuanId.value != '0' && codeKurir.value != '0'){
+      try{
 
+      }catch(e){
+        print(e);
+        Get.defaultDialog(
+          title: "Kesalahan",
+          middleText: "Cek Ongkir Gagal",
+        );
+      }
 
 
     }else{
